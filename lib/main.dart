@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
+  var box = await Hive.openBox('passdb');
+  Hive.registerAdapter(PassAdapter());
   runApp(MyPassApp());
 }
 
@@ -14,7 +18,7 @@ class MyPassApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My Todo App',
+      title: 'My Pass App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -31,24 +35,26 @@ class PassListPage extends StatefulWidget {
 }
 
 class _PassListPageState extends State<PassListPage> {
-  List<PassCard> passList = [];
+ // List<PassCard> passList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('リスト一覧'),
-      ),
-      body: ListView.builder(
-        itemCount: passList.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
 
-              title: (passList[index]),
-            ),
-          );
-        },
+
       ),
+      body:
+        ValueListenableBuilder<Box<Pass>>(
+          valueListenable: Hive.box('passdb').listenable(),
+          builder(context,box){
+            var passs = box.values.toList().cast<Pass>();
+            return PassList(passs);
+        },
+        ),
+
+
+
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           final newListText = await Navigator.of(context).push(
