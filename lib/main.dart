@@ -57,16 +57,12 @@ class _PassListPageState extends State<PassListPage> {
 
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          final newListText = await Navigator.of(context).push(
+          await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
               return PassAddPage();
             }),
           );
-          if (newListText != null) {
-            setState(() {
-              passList.add(newListText);
-            });
-          }
+          
         },
         child: Icon(Icons.add),
       ),
