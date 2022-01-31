@@ -1,3 +1,4 @@
+
 import package:hive/hive.dart;
 part 'Pass.g.dart';
 
