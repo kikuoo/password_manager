@@ -1,20 +1,20 @@
 
-import package:hive/hive.dart;
+import 'package:hive/hive.dart';
 part 'Pass.g.dart';
 
-@HiveType(typeId:0);
+@HiveType(typeId:0)
 
 class Pass {
-    @HiveFild(0)
+    @HiveField(0)
     String name;
 
-    @HiveFild(1)
+    @HiveField(1)
     String id;
 
-    @HiveFild(2)
+    @HiveField(2)
     String password;
 
-    @HiveFild(3)
+    @HiveField(3)
     String remark;
 
     Pass(this.name,this.id,this.password,this.remark);

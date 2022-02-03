@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'Pass.dart';
+import 'PassList.dart';
+
 
 void main() async{
   await Hive.initFlutter();
-  var box = await Hive.openBox('passdb');
+  var box = await Hive.openBox('passed');
   Hive.registerAdapter(PassAdapter());
   runApp(MyPassApp());
 }
@@ -46,10 +49,11 @@ class _PassListPageState extends State<PassListPage> {
       ),
       body:
         ValueListenableBuilder<Box<Pass>>(
-          valueListenable: Hive.box('passdb').listenable(),
-          builder(context,box){
-            var passs = box.values.toList().cast<Pass>();
-            return PassList(passs);
+          valueListenable: Hive.box('passed').listenable(),
+          builder:(context,box,widget){
+            var passes
+            = box.values.toList().cast<Pass>();
+            return PassList(passes);
         },
         ),
 
