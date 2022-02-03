@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
+import 'Pass.dart';
+
 class PassList extends StatelessWidget{
   final List<Pass> pass;
   const PassList(this.pass);
