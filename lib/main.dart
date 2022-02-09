@@ -151,8 +151,9 @@ class _PassAddPageState extends State<PassAddPage> {
 
               child: ElevatedButton(
                 onPressed: () {
-                  var _card = PassCard(this._text1,this._text2,this._text3,this._text4);
-                  Navigator.of(context).pop(_card);
+                  var pass = Pass(this._text1,this._text2,this._text3,this._text4);
+                  Hive.box<Pass>('passed').add(pass);
+                  Navigator.of(context).pop();
                 },
                 child: Text('リスト追加', style: TextStyle(color: Colors.white)),
               ),
