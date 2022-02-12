@@ -13,15 +13,23 @@ class PassList extends StatelessWidget{
         }
 
     );
+
+
   }
 }
 
 _buildPass(Pass passed){
   return Card(
     color: Colors.white,
-    child:Padding(padding: const EdgeInsets.all(20.0),
-    child: Text(passed.name,style: TextStyle(fontSize: 30)),
-
+    margin: const EdgeInsets.all(20.0),
+    child: Column(
+    crossAxisAlignment:CrossAxisAlignment.center,
+    children: <Widget>[
+    Text(passed.name,style: TextStyle(fontSize: 30)),
+    Text(passed.id,style: TextStyle(fontSize: 30)),
+    Text(passed.password,style: TextStyle(fontSize: 30)),
+    Text(passed.remark,style: TextStyle(fontSize: 30)),
+    ],
 
   ));
 
