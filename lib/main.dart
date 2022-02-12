@@ -8,7 +8,7 @@ import 'PassList.dart';
 
 void main() async{
   await Hive.initFlutter();
-  var box = await Hive.openBox('passed');
+  await Hive.openBox('passed');
   Hive.registerAdapter(PassAdapter());
   runApp(MyPassApp());
 }
@@ -35,6 +35,7 @@ class PassListPage extends StatefulWidget {
   _PassListPageState createState() => _PassListPageState();
 }
 
+
 class _PassListPageState extends State<PassListPage> {
  // List<PassCard> passList = [];
   @override
@@ -46,7 +47,7 @@ class _PassListPageState extends State<PassListPage> {
 
       ),
       body:
-        ValueListenableBuilder<Box<Pass>>(
+        ValueListenableBuilder(
           valueListenable: Hive.box('passed').listenable(),
           builder:(context,box,widget){
             var passes
@@ -135,6 +136,7 @@ class _PassAddPageState extends State<PassAddPage> {
           TextField(
             decoration: InputDecoration(
               labelText: "Remarks",
+
             ),
             onChanged: (String value) {
               setState(() {
@@ -155,6 +157,7 @@ class _PassAddPageState extends State<PassAddPage> {
                 },
                 child: Text('リスト追加', style: TextStyle(color: Colors.white)),
               ),
+
             ),
             const SizedBox(height: 8),
             Container(
