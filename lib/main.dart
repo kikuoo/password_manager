@@ -50,8 +50,7 @@ class _PassListPageState extends State<PassListPage> {
         ValueListenableBuilder(
           valueListenable: Hive.box('passed').listenable(),
           builder:(context,box,widget){
-            var passes
-            = box.values.toList().cast<Pass>();
+            var passes = box.values.toList().cast<Pass>();
             return PassList(passes);
         },
         ),
