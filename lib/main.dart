@@ -8,7 +8,7 @@ import 'PassList.dart';
 
 void main() async{
   await Hive.initFlutter();
-  await Hive.openBox('passed');
+ final  box =  await Hive.openBox<Pass>('passed');
   Hive.registerAdapter(PassAdapter());
   runApp(MyPassApp());
 }
@@ -84,6 +84,7 @@ class _PassAddPageState extends State<PassAddPage> {
   String _text3 = '';
   String _text4 = '';
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,10 +97,7 @@ class _PassAddPageState extends State<PassAddPage> {
           mainAxisAlignment: MainAxisAlignment.center,
 
           children: <Widget>[
-            //Text(_text1, style: TextStyle(color: Colors.blue)),
-            //Text(_text2, style: TextStyle(color: Colors.blue)),
-            //Text(_text3, style: TextStyle(color: Colors.blue)),
-            const SizedBox(height: 8),
+                        const SizedBox(height: 8),
             TextField( decoration: InputDecoration(
                 labelText: "Title",
                 ),
@@ -149,9 +147,10 @@ class _PassAddPageState extends State<PassAddPage> {
               width: double.infinity,
 
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  var passData = await Hive.openBox<Pass>('passed');
                   var pass = Pass(this._text1,this._text2,this._text3,this._text4);
-                  Hive.box<Pass>('passed').add(pass);
+                  passData.add(pass);
                   Navigator.of(context).pop();
                 },
                 child: Text('リスト追加', style: TextStyle(color: Colors.white)),
