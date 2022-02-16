@@ -147,10 +147,11 @@ class _PassAddPageState extends State<PassAddPage> {
               width: double.infinity,
 
               child: ElevatedButton(
-                onPressed: () async {
-                  var passData = await Hive.openBox<Pass>('passim');
+                onPressed: ()  {
+                  var passData =  Hive.box<Pass>('passim');
                   var pass = Pass(this._text1,this._text2,this._text3,this._text4);
                   passData.add(pass);
+
                   Navigator.of(context).pop();
                 },
                 child: Text('リスト追加', style: TextStyle(color: Colors.white)),
