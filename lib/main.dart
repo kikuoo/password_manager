@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-
+import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
+import 'package:flutter/cupertino.dart';
 import 'Pass.dart';
 import 'PassList.dart';
 
 
-void main() async{
+
+Future<void> main() async{
   await Hive.initFlutter();
- await Hive.openBox<Pass>('passim');
-  Hive.registerAdapter(PassAdapter());
+var box = await Hive.openBox<Pass>('passim');
+  Hive.registerAdapter<Pass>(PassAdapter());
   runApp(MyPassApp());
 }
+
 
 class MyPassApp extends StatelessWidget {
   @override
