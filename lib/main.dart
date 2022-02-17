@@ -8,10 +8,15 @@ import 'PassList.dart';
 
 
 Future<void> main() async{
+
   await Hive.initFlutter();
-var box = await Hive.openBox<Pass>('passim');
   Hive.registerAdapter<Pass>(PassAdapter());
+var box = await Hive.openBox<Pass>('passim');
+  //if (!Hive.isAdapterRegistered(0)) {
+    //Hive.registerAdapter<Pass>(PassAdapter());
+  //}
   runApp(MyPassApp());
+
 }
 
 
@@ -56,6 +61,9 @@ class _PassListPageState extends State<PassListPage> {
             return PassList(passes);
         },
         ),
+
+
+
 
 
 
