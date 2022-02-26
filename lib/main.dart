@@ -11,7 +11,7 @@ Future<void> main() async{
 
   await Hive.initFlutter();
   Hive.registerAdapter<Pass>(PassAdapter());
-var box = await Hive.openBox<Pass>('passim');
+   await Hive.openBox<Pass>('passim');
   //if (!Hive.isAdapterRegistered(0)) {
     //Hive.registerAdapter<Pass>(PassAdapter());
   //}
@@ -187,43 +187,3 @@ class _PassAddPageState extends State<PassAddPage> {
 
 
 
-class PassCard extends StatelessWidget {
-
-  final String _name;
-  final String _id;
-  final String _password;
-  final String _remarks;
-
-  PassCard(this._name, this._id, this._password,this._remarks);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(width: 400,
-                  decoration: BoxDecoration(
-                    // 枠線
-                    border: Border.all(color: Colors.blue, width: 2),
-                    // 角丸
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  padding: EdgeInsets.only(top: 5, right: 20, bottom: 10, left: 30),
-                child: Text('Title: '+_name,style:TextStyle(fontSize: 20))
-                ),
-              Container(width: 400,
-                  padding: EdgeInsets.only(top: 5, right: 20, bottom: 5, left: 30),
-                child: Text(' ID :' + _id,style:TextStyle(fontSize: 20))
-                ),
-              Container(width: 400,
-                  padding: EdgeInsets.only(top: 5, right: 20, bottom: 5, left: 30),
-                child: Text('Pw :' + _password,style:TextStyle(fontSize: 20))
-                ),
-              Container(width: 400,
-                padding: EdgeInsets.only(top: 5, right: 20, bottom: 5, left: 30),
-                child: Text( 'Re :' +  _remarks,style:TextStyle(fontSize: 20))
-              )
-            ],
-    );
-  }
-}

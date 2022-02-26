@@ -11,8 +11,9 @@ class PassList extends StatelessWidget{
         itemCount:pass.length,
         itemBuilder:(BuildContext context,int index){
           var pas = pass[index];
-          return _buildPass(pas);
+          return _buildPass(pas,context);
         }
+
 
     );
 
@@ -20,20 +21,46 @@ class PassList extends StatelessWidget{
   }
 }
 
-_buildPass(Pass passed){
-  return Card(
-    color: Colors.white,
-    margin: const EdgeInsets.all(20.0),
-    child: Column(
-    crossAxisAlignment:CrossAxisAlignment.center,
-    children: <Widget>[
-    Text(passed.name,style: TextStyle(fontSize: 30)),
-    Text(passed.id,style: TextStyle(fontSize: 30)),
-    Text(passed.password,style: TextStyle(fontSize: 30)),
-    Text(passed.remark,style: TextStyle(fontSize: 30)),
-    ],
+_buildPass(Pass passed,context){
+    return Card(
+        child: InkWell(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return SimpleDialog(
+                    title: Text("This is the title"),
+                    children: [
+                      SimpleDialogOption(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("first item"),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("second item"),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("Third item"),
+                      ),
+                    ],
+                  );
+                },
+              );
 
-  ));
 
+               },
 
+            //color:Colors.white,
+            //margin: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(passed.name, style: TextStyle(fontSize: 30)),
+                Text(passed.id, style: TextStyle(fontSize: 30)),
+                Text(passed.password, style: TextStyle(fontSize: 30)),
+                Text(passed.remark, style: TextStyle(fontSize: 30)),
+              ],
+
+            )));
 }
