@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 
 class PassList extends StatelessWidget{
+
   final List<Pass> pass;
   const PassList(this.pass);
   Widget build(BuildContext context){
@@ -25,6 +26,9 @@ _buildPass(Pass passed,context){
     return Card(
         child: InkWell(
             onTap: () {
+
+
+
               showDialog(
                 context: context,
                 builder: (context) {
@@ -33,15 +37,19 @@ _buildPass(Pass passed,context){
                     children: [
                       SimpleDialogOption(
                         onPressed: () => Navigator.pop(context),
-                        child: Text("first item"),
+                        child: Text("edit"),
+                      ),
+                      SimpleDialogOption(
+                        onPressed: (){
+
+
+                          Navigator.pop(context);
+                        },
+                        child: Text("delete"),
                       ),
                       SimpleDialogOption(
                         onPressed: () => Navigator.pop(context),
-                        child: Text("second item"),
-                      ),
-                      SimpleDialogOption(
-                        onPressed: () => Navigator.pop(context),
-                        child: Text("Third item"),
+                        child: Text("Cancel"),
                       ),
                     ],
                   );
