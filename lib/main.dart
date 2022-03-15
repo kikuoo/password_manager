@@ -56,9 +56,11 @@ class _PassListPageState extends State<PassListPage> {
       body:
         ValueListenableBuilder(
           valueListenable: Hive.box<Pass>('passim').listenable(),
-          builder:(context,box,widget){
+          builder:(context,Box<Pass> box,widget){
             var passes = box.values.toList();
-            return PassList(passes);
+            List<int> keys = box.keys.cast<int>().toList();
+
+            return PassList(passes,keys);
         },
         ),
 
@@ -74,7 +76,7 @@ class _PassListPageState extends State<PassListPage> {
               return PassAddPage();
             }),
           );
-          
+
         },
         child: Icon(Icons.add),
       ),

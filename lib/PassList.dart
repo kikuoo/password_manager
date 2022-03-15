@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'Pass.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 
 class PassList extends StatelessWidget{
 
   final List<Pass> pass;
-  const PassList(this.pass);
+  final List<int> keys;
+
+  const PassList(this.pass,this.keys);
   Widget build(BuildContext context){
     return ListView.builder(
         itemCount:pass.length,
-        itemBuilder:(BuildContext context,int index){
+        itemBuilder:(context,int index){
+          final int key = keys[index];
+
           var pas = pass[index];
-          return _buildPass(pas,context);
+          return _buildPass(pas,context,key);
         }
 
 
@@ -22,7 +28,8 @@ class PassList extends StatelessWidget{
   }
 }
 
-_buildPass(Pass passed,context){
+_buildPass(Pass passed,context,int key){
+
     return Card(
         child: InkWell(
             onTap: () {
@@ -32,6 +39,7 @@ _buildPass(Pass passed,context){
               showDialog(
                 context: context,
                 builder: (context) {
+
                   return SimpleDialog(
                     title: Text("This is the title"),
                     children: [
@@ -41,6 +49,9 @@ _buildPass(Pass passed,context){
                       ),
                       SimpleDialogOption(
                         onPressed: (){
+                         var box = Hive.box<Pass>('passim');
+
+                          box.delete(key);
 
 
                           Navigator.pop(context);
