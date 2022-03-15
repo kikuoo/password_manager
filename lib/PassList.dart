@@ -51,6 +51,7 @@ _buildPass(Pass passed,context,int key){
                         onPressed: (){
                          var box = Hive.box<Pass>('passim');
                           box.delete(key);
+
                           Navigator.pop(context);
                         },
                         child: Text("delete"),
