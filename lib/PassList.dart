@@ -50,7 +50,6 @@ _buildPass(Pass passed,context,int key){
                       SimpleDialogOption(
                         onPressed: (){
                          var box = Hive.box<Pass>('passim');
-
                           box.delete(key);
                           Navigator.pop(context);
                         },
