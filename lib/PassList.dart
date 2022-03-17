@@ -44,7 +44,12 @@ _buildPass(Pass passed,context,int key){
                     title: Text("This is the title"),
                     children: [
                       SimpleDialogOption(
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          var box = Hive.box<Pass>('passim');
+
+
+                          Navigator.pop(context);
+                        },
                         child: Text("edit"),
                       ),
                       SimpleDialogOption(
