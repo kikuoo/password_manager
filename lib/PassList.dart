@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:password_manager/PassEdit.dart';
 import 'Pass.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'main.dart';
 
 
 class PassList extends StatelessWidget{
@@ -46,11 +49,12 @@ _buildPass(Pass passed,context,int key){
                       SimpleDialogOption(
                         onPressed: () {
                           var box = Hive.box<Pass>('passim');
-
-
-                          Navigator.pop(context);
+                          Navigator.of(context).push(MaterialPageRoute(builder:(context){
+                           return PassEdit(key);
+                          }));
                         },
                         child: Text("edit"),
+
                       ),
                       SimpleDialogOption(
                         onPressed: (){

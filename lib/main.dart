@@ -44,7 +44,7 @@ class PassListPage extends StatefulWidget {
 
 
 class _PassListPageState extends State<PassListPage> {
- // List<PassCard> passList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +85,7 @@ class _PassListPageState extends State<PassListPage> {
 }
 
 class PassAddPage extends StatefulWidget {
+
   @override
   _PassAddPageState createState() => _PassAddPageState();
 }
@@ -97,8 +98,10 @@ class _PassAddPageState extends State<PassAddPage> {
   String _text4 = '';
 
 
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('リスト追加'),
@@ -113,9 +116,10 @@ class _PassAddPageState extends State<PassAddPage> {
             TextField( decoration: InputDecoration(
                 labelText: "Title",
                 ),
+
               onChanged: (String value) {
                 setState(() {
-                  _text1 = value;
+                  _text1 = value ;
                 });
               },
             ),
@@ -186,6 +190,7 @@ class _PassAddPageState extends State<PassAddPage> {
     );
   }
 }
+
 
 
 
