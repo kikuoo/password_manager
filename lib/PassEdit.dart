@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'Pass.dart';
 
-class PassEdit extends State {
+int keyed;
+class PassEdit extends StatefulWidget{
 
-  final int keyed;
+ PassEdit(keyed);
+@override
+  _PassEditState createState() => _PassEditState();
+}
 
-  PassEdit(this.keyed);
+class _PassEditState extends State<PassEdit>{
 
 
   @override
@@ -27,12 +31,12 @@ class PassEdit extends State {
                   TextField(controller: TextEditingController
                     (text: pass.id),onChanged: (String value){
                     setState(() {
-                       = value;
+                     pass.id  = value;
 
                     });
                   },
-
                   ),
+
                 ]
             ))
 
