@@ -54,7 +54,7 @@ _buildPass(Pass passed,context,int key){
                         onPressed: () {
                           var box = Hive.box<Pass>('passim');
                           Navigator.push(context,MaterialPageRoute(builder:(context)
-                           => PassEdit(key)
+                            => PassEdit(keyed: key)
                           ));
                         },
                         child: Text("edit"),
