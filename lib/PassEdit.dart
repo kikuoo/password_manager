@@ -30,7 +30,7 @@ class _PassEditState extends State<PassEdit>{
                   TextField(controller: TextEditingController
                     (text: pass.name),onChanged: (String value){
                     setState(() {
-                         pass.name = value;
+                      pass.name = value;
                      // Navigator.defaultRouteName
                     });
                   },
