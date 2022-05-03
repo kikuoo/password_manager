@@ -24,12 +24,7 @@ class _PassEditState extends State<PassEdit>{
     final passwordController = TextEditingController(text: pass.password);
     final remarkController = TextEditingController(text: pass.remark);
 
-    String _text1;
-    String _text2;
-    String _text3;
-    String _text4;
-
-    return Scaffold(
+       return Scaffold(
         appBar: AppBar(
           title: Text('リスト追加'),
         ),
@@ -45,7 +40,7 @@ class _PassEditState extends State<PassEdit>{
                     nameController.selection =
                     TextSelection.fromPosition(TextPosition(offset:nameController.text.length),
                     );
-                  _text1 = value;
+                    pass.name = value;
                   },
                   ),
                   TextFormField(controller: idController
@@ -53,7 +48,7 @@ class _PassEditState extends State<PassEdit>{
                       idController.selection =
                           TextSelection.fromPosition(TextPosition(offset:idController.text.length),
                           );
-                      _text2 = value;
+                      pass.id = value;
                     },
                   ),
                   TextFormField(controller: passwordController
@@ -61,7 +56,7 @@ class _PassEditState extends State<PassEdit>{
                       passwordController.selection =
                           TextSelection.fromPosition(TextPosition(offset:passwordController.text.length),
                           );
-                      _text3 = value;
+                       pass.password = value;
                     },
                   ),
                   TextFormField(controller: remarkController
@@ -69,7 +64,7 @@ class _PassEditState extends State<PassEdit>{
                       remarkController.selection =
                           TextSelection.fromPosition(TextPosition(offset:remarkController.text.length),
                           );
-                      _text4 = value;
+                       pass.remark = value;
                     },
                   ),
 
@@ -79,13 +74,12 @@ class _PassEditState extends State<PassEdit>{
 
                          child: ElevatedButton(
                           onPressed: ()  {
-                            setState(() {
-                              (_text1 == '') _text1 = pass.name:_text1 = this._text1;
+                            //setState(() {
                              // pass.name = _text1;
-                              pass.id = _text2;
-                              pass.password =_text3;
-                              pass.remark = _text4;
-                            });
+                            //  pass.id = _text2;
+                             // pass.password =_text3;
+                             // pass.remark = _text4;
+                           // });
                             Navigator.push(context, MaterialPageRoute(
                                 builder:(context) => PassListPage()
                             ));
