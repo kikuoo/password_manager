@@ -80,7 +80,8 @@ class _PassEditState extends State<PassEdit>{
                          child: ElevatedButton(
                           onPressed: ()  {
                             setState(() {
-                              pass.name = _text1;
+                              (_text1 == '') _text1 = pass.name:_text1 = this._text1;
+                             // pass.name = _text1;
                               pass.id = _text2;
                               pass.password =_text3;
                               pass.remark = _text4;
