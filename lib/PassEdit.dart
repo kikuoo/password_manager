@@ -74,17 +74,13 @@ class _PassEditState extends State<PassEdit>{
 
                          child: ElevatedButton(
                           onPressed: ()  {
-                            //setState(() {
-                             // pass.name = _text1;
-                            //  pass.id = _text2;
-                             // pass.password =_text3;
-                             // pass.remark = _text4;
-                           // });
+
                             Navigator.push(context, MaterialPageRoute(
                                 builder:(context) => PassListPage()
                             ));
 
                       },
+
 
 
                              child: Text('保存', style: TextStyle(color: Colors.white)),
@@ -97,6 +93,9 @@ class _PassEditState extends State<PassEdit>{
   }
 
 }
+
+
+
 
 
 

@@ -8,9 +8,11 @@ import 'main.dart';
 import 'PassEdit.dart';
 
 
+
 class PassList extends StatelessWidget{
 
   final List<Pass> pass;
+
   final List<int> keys;
 
   const PassList(this.pass,this.keys);
@@ -52,22 +54,54 @@ _buildPass(Pass passed,context,int key){
                     children: [
                       SimpleDialogOption(
                         onPressed: () {
-                          var box = Hive.box<Pass>('passim');
-                          Navigator.push(context,MaterialPageRoute(builder:(context)
+                          //var box = Hive.box<Pass>('passim');
+                         Navigator.push(context,MaterialPageRoute(builder:(context)
                             => PassEdit(keyed: key)
                           ));
+
                         },
                         child: Text("edit"),
 
                       ),
                       SimpleDialogOption(
                         onPressed: (){
-                         var box = Hive.box<Pass>('passim');
-                          box.delete(key);
-                          Navigator.pop(context);
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (_) {
+                              return AlertDialog(
+                                title: Text("Deletion confirmation"
+                                    ""),
+                                content: Text("Can I delete it ?"),
+                                actions: [
+                                  TextButton(
+                                    child: Text("Cancel"),
+                                    onPressed: (){
+                                      Navigator.push(context,MaterialPageRoute(builder:(context)
+                                      => PassListPage()
+                                      ));
+                                    }
+                                  ),
+                                  TextButton(
+                                      child: Text("OK"),
+                                      onPressed: () {
+                                        var box = Hive.box<Pass>('passim');
+                                        box.delete(key);
+                                        Navigator.push(context,MaterialPageRoute(builder:(context)
+                                        => PassListPage()
+                                        ));
+                                      }
+
+
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         },
                         child: Text("delete"),
                       ),
+
                       SimpleDialogOption(
                         onPressed: () => Navigator.pop(context),
                         child: Text("Cancel"),
@@ -93,3 +127,6 @@ _buildPass(Pass passed,context,int key){
 
             )));
 }
+
+
+
