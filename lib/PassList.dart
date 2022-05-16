@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-//import 'package:password_manager/PassEdit.dart';
-import 'Pass.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'main.dart';
 import 'PassEdit.dart';
-
-
+import 'Pass.dart';
 
 class PassList extends StatelessWidget{
-
   final List<Pass> pass;
-
   final List<int> keys;
 
   const PassList(this.pass,this.keys);
@@ -21,34 +16,20 @@ class PassList extends StatelessWidget{
         itemCount:pass.length,
         itemBuilder:(context,int index){
           final int key = keys[index];
-
           var pas = pass[index];
           return _buildPass(pas,context,key);
         }
-
-
     );
-
-
   }
 }
 
-
-
-
 _buildPass(Pass passed,context,int key){
-
-
     return Card(
         child: InkWell(
             onTap: () {
-
-
-
               showDialog(
                 context: context,
                 builder: (context) {
-
                   return SimpleDialog(
                     title: Text("This is the title"),
                     children: [
@@ -58,10 +39,8 @@ _buildPass(Pass passed,context,int key){
                          Navigator.push(context,MaterialPageRoute(builder:(context)
                             => PassEdit(keyed: key)
                           ));
-
                         },
                         child: Text("edit"),
-
                       ),
                       SimpleDialogOption(
                         onPressed: (){
@@ -91,8 +70,6 @@ _buildPass(Pass passed,context,int key){
                                         => PassListPage()
                                         ));
                                       }
-
-
                                   ),
                                 ],
                               );
@@ -101,7 +78,6 @@ _buildPass(Pass passed,context,int key){
                         },
                         child: Text("delete"),
                       ),
-
                       SimpleDialogOption(
                         onPressed: () => Navigator.pop(context),
                         child: Text("Cancel"),
@@ -110,10 +86,7 @@ _buildPass(Pass passed,context,int key){
                   );
                 },
               );
-
-
-               },
-
+              },
             //color:Colors.white,
             //margin: const EdgeInsets.all(20.0),
             child: Column(
@@ -124,7 +97,6 @@ _buildPass(Pass passed,context,int key){
                 Text(passed.password, style: TextStyle(fontSize: 30)),
                 Text(passed.remark, style: TextStyle(fontSize: 30)),
               ],
-
             )));
 }
 

@@ -84,7 +84,18 @@ class _PassEditState extends State<PassEdit>{
 
 
                              child: Text('保存', style: TextStyle(color: Colors.white)),
-                    ),)
+                    ),),
+            const SizedBox(height: 8),
+            Container(
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('キャンセル'),
+                ),)
+
+
 
                 ]
             ))
