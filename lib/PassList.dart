@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'main.dart';
 import 'PassEdit.dart';
+
 import 'Pass.dart';
 
 class PassList extends StatelessWidget{
@@ -90,12 +91,12 @@ _buildPass(Pass passed,context,int key){
             //color:Colors.white,
             //margin: const EdgeInsets.all(20.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(passed.name, style: TextStyle(fontSize: 30)),
-                Text(passed.id, style: TextStyle(fontSize: 30)),
-                Text(passed.password, style: TextStyle(fontSize: 30)),
-                Text(passed.remark, style: TextStyle(fontSize: 30)),
+                Text('    Title       :   '+passed.name, style: TextStyle(fontSize: 30)),
+                Text('       ID        :   '+passed.id, style: TextStyle(fontSize: 30)),
+                Text('Password :  '+passed.password, style: TextStyle(fontSize: 30)),
+                Text('  Remark   :  '+passed.remark, style: TextStyle(fontSize: 30)),
               ],
             )));
 }
