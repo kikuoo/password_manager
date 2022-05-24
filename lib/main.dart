@@ -53,8 +53,6 @@ class _PassListPageState extends State<PassListPage> {
       ),drawer: Drawer(
 
 
-
-
     ),
       body:
         ValueListenableBuilder(
