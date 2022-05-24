@@ -50,9 +50,12 @@ class _PassListPageState extends State<PassListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('リスト一覧'),
+      ),drawer: Drawer(
 
 
-      ),
+
+
+    ),
       body:
         ValueListenableBuilder(
           valueListenable: Hive.box<Pass>('passim').listenable(),
