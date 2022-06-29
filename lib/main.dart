@@ -44,16 +44,45 @@ class PassListPage extends StatefulWidget {
 
 
 class _PassListPageState extends State<PassListPage> {
-
+   bool _searchBoolean = false;
+   Widget _searchTextField(){
+     return TextField(
+       autofocus: true,
+       cursorColor: Colors.white,
+       style: TextStyle(
+         color: Colors.white,
+         fontSize: 20,
+       ),
+       textInputAction: TextInputAction.search,
+       decoration:  InputDecoration(
+      enabledBorder:  UnderDecoratuon
+     )
+     );
+   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('リスト一覧'),
-      ),drawer: Drawer(
+        title:!_searchBoolean ? Text("Password manager") : _searchTextField(),
+        actions: !_searchBoolean
+        ?[IconButton(icon: Icon(Icons.search),
+          onPressed: (){
+          setState(() {
+            _searchBoolean = true;
+          });
+         })
+      ]:[
+        IconButton(
+          icon: Icon(Icons.clear),
+          onPressed:(){
+            setState((){
+              _searchBoolean = false;
+            });
+          }
+        )
+        ],
+      ),
 
-
-    ),
       body:
         ValueListenableBuilder(
           valueListenable: Hive.box<Pass>('passim').listenable(),
