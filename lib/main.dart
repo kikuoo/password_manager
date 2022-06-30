@@ -55,7 +55,17 @@ class _PassListPageState extends State<PassListPage> {
        ),
        textInputAction: TextInputAction.search,
        decoration:  InputDecoration(
-      enabledBorder:  UnderDecoratuon
+      enabledBorder:  UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.white)
+      ),
+         focusedBorder: UnderlineInputBorder(
+           borderSide: BorderSide(color: Colors.white)
+         ),
+         hintText: 'Search',
+         hintStyle: TextStyle(
+           color: Colors.white60,
+           fontSize: 20,
+         )
      )
      );
    }
