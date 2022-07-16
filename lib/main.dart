@@ -45,8 +45,16 @@ class PassListPage extends StatefulWidget {
 
 class _PassListPageState extends State<PassListPage> {
    bool _searchBoolean = false;
+   var passes = [];
+   var _text = '';
+   List<int> keys;
    Widget _searchTextField(){
-     return TextField(
+     return TextFormField(
+       onChanged: (String value){
+         setState(() {
+           _text = value;
+         });
+       },
        autofocus: true,
        cursorColor: Colors.white,
        style: TextStyle(
@@ -69,6 +77,10 @@ class _PassListPageState extends State<PassListPage> {
      )
      );
    }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,18 +109,16 @@ class _PassListPageState extends State<PassListPage> {
         ValueListenableBuilder(
           valueListenable: Hive.box<Pass>('passim').listenable(),
           builder:(context,Box<Pass> box,widget){
-            var passes = box.values.toList();
-            List<int> keys = box.keys.cast<int>().toList();
+           // !_searchBoolean ?
+            passes = box.values.toList();
+             //  passes = box.values.where((element) => box.name.contains(_text)).toList();
+           // !_searchBoolean ?
+          keys = box.keys.cast<int>().toList();
+           // keys = box.keys.where((element) => box.name.contains(_text)).cast<int>().toList();
 
             return PassList(passes,keys);
         },
         ),
-
-
-
-
-
-
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await Navigator.of(context).push(
@@ -230,6 +240,10 @@ class _PassAddPageState extends State<PassAddPage> {
     );
   }
 }
+
+
+
+
 
 
 

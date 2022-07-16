@@ -18,4 +18,11 @@ class Pass {
     String remark;
 
     Pass(this.name,this.id,this.password,this.remark);
+
+
+
+
+  
+
+    
 }
