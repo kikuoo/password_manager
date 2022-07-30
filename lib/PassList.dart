@@ -14,7 +14,7 @@ class PassList extends StatelessWidget{
   const PassList(this.pass,this.keys);
   Widget build(BuildContext context){
     return ListView.builder(
-        itemCount:pass.length,
+       itemCount:keys.length,
         itemBuilder:(context,int index){
           final int key = keys[index];
           var pas = pass[index];
@@ -36,7 +36,7 @@ _buildPass(Pass passed,context,int key){
                     children: [
                       SimpleDialogOption(
                         onPressed: () {
-                          //var box = Hive.box<Pass>('passim');
+                          //var box = Hive.ox<Pass>('passim');
                          Navigator.push(context,MaterialPageRoute(builder:(context)
                             => PassEdit(keyed: key)
                           ));

@@ -45,9 +45,11 @@ class PassListPage extends StatefulWidget {
 
 class _PassListPageState extends State<PassListPage> {
    bool _searchBoolean = false;
-   var passes = [];
+   List<Pass> passes = [] ;
+   List<Pass> _passes2 = [];
    var _text = '';
-   List<int> keys;
+   List<int> keys  = [];
+   List<int> keys2 = [];
    Widget _searchTextField(){
      return TextFormField(
        onChanged: (String value){
@@ -90,6 +92,7 @@ class _PassListPageState extends State<PassListPage> {
         ?[IconButton(icon: Icon(Icons.search),
           onPressed: (){
           setState(() {
+          _text = '';
             _searchBoolean = true;
           });
          })
@@ -109,14 +112,23 @@ class _PassListPageState extends State<PassListPage> {
         ValueListenableBuilder(
           valueListenable: Hive.box<Pass>('passim').listenable(),
           builder:(context,Box<Pass> box,widget){
-           // !_searchBoolean ?
-            passes = box.values.toList();
-             //  passes = box.values.where((element) => box.name.contains(_text)).toList();
-           // !_searchBoolean ?
-          keys = box.keys.cast<int>().toList();
-           // keys = box.keys.where((element) => box.name.contains(_text)).cast<int>().toList();
-
-            return PassList(passes,keys);
+              !_searchBoolean ?
+              passes = box.values.toList() :
+             passes = [];
+              _passes2 = [];
+             keys = [];
+             keys2 = [];
+              _passes2 = box.values.toList();
+              for (int i = 0; i < _passes2.length; i++) {
+                if (_passes2[i].name.contains(_text)) {
+                  passes.add(_passes2[i]);
+                  keys2.add(i);
+                }
+              }
+              !_searchBoolean ? keys = box.keys.cast<int>().toList() :
+            //  keys = [];
+              keys = keys2;
+              return PassList(passes,keys);
         },
         ),
       floatingActionButton: FloatingActionButton(
