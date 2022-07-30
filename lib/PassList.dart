@@ -36,7 +36,6 @@ _buildPass(Pass passed,context,int key){
                     children: [
                       SimpleDialogOption(
                         onPressed: () {
-                          //var box = Hive.ox<Pass>('passim');
                          Navigator.push(context,MaterialPageRoute(builder:(context)
                             => PassEdit(keyed: key)
                           ));
@@ -88,8 +87,6 @@ _buildPass(Pass passed,context,int key){
                 },
               );
               },
-            //color:Colors.white,
-            //margin: const EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

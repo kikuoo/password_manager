@@ -4,7 +4,7 @@ import 'package:password_manager/PassList.dart';
 import 'package:password_manager/main.dart';
 import 'Pass.dart';
 
-//int keyed;
+
 class PassEdit extends StatefulWidget{
   final int keyed;
   PassEdit({this.keyed});

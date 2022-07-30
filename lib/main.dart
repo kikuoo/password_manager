@@ -12,9 +12,6 @@ Future<void> main() async{
   await Hive.initFlutter();
   Hive.registerAdapter<Pass>(PassAdapter());
    await Hive.openBox<Pass>('passim');
-  //if (!Hive.isAdapterRegistered(0)) {
-    //Hive.registerAdapter<Pass>(PassAdapter());
-  //}
   runApp(MyPassApp());
 
 }
@@ -126,7 +123,6 @@ class _PassListPageState extends State<PassListPage> {
                 }
               }
               !_searchBoolean ? keys = box.keys.cast<int>().toList() :
-            //  keys = [];
               keys = keys2;
               return PassList(passes,keys);
         },
