@@ -26,6 +26,11 @@ class PassList extends StatelessWidget{
 
 _buildPass(Pass passed,context,int key){
     return Card(
+      margin: const EdgeInsets.all(10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      color: Colors.blueGrey[200],
         child: InkWell(
             onTap: () {
               showDialog(

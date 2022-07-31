@@ -7,6 +7,7 @@ import 'PassList.dart';
 
 
 
+
 Future<void> main() async{
 
   await Hive.initFlutter();
@@ -25,7 +26,7 @@ class MyPassApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'My Pass App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+       // primarySwatch: Colors.blueGrey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: PassListPage(),
@@ -83,6 +84,7 @@ class _PassListPageState extends State<PassListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey[500],
       appBar: AppBar(
         title:!_searchBoolean ? Text("Password manager") : _searchTextField(),
         actions: !_searchBoolean
@@ -103,6 +105,7 @@ class _PassListPageState extends State<PassListPage> {
           }
         )
         ],
+        backgroundColor:Colors.blueGrey[800],
       ),
 
       body:
@@ -128,6 +131,7 @@ class _PassListPageState extends State<PassListPage> {
         },
         ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueGrey[900],
         onPressed: () async {
           await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
