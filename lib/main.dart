@@ -84,7 +84,7 @@ class _PassListPageState extends State<PassListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[500],
+      backgroundColor: Colors.blueGrey[700],
       appBar: AppBar(
         title:!_searchBoolean ? Text("Password manager") : _searchTextField(),
         actions: !_searchBoolean
@@ -105,7 +105,7 @@ class _PassListPageState extends State<PassListPage> {
           }
         )
         ],
-        backgroundColor:Colors.blueGrey[800],
+        backgroundColor:Colors.blueGrey[900],
       ),
 
       body:

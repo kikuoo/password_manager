@@ -1,3 +1,4 @@
+//import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
@@ -26,11 +27,11 @@ class PassList extends StatelessWidget{
 
 _buildPass(Pass passed,context,int key){
     return Card(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
         ),
-      color: Colors.blueGrey[200],
+      color: Colors.blueGrey[500],
         child: InkWell(
             onTap: () {
               showDialog(
@@ -95,12 +96,34 @@ _buildPass(Pass passed,context,int key){
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('    Title       :   '+passed.name, style: TextStyle(fontSize: 30)),
-                Text('       ID        :   '+passed.id, style: TextStyle(fontSize: 30)),
+                Container(width:500,alignment:Alignment.center,color: Colors.white24,child:Text(passed.name, style: TextStyle(fontSize: 40))),
+
+                _id(passed),//Container(child:Text('       ID        :   '+passed.id, style: TextStyle(fontSize: 30))),
                 Text('Password :  '+passed.password, style: TextStyle(fontSize: 30)),
                 Text('  Remark   :  '+passed.remark, style: TextStyle(fontSize: 30)),
-              ],
+         ],
             )));
+
+
+
+
+}
+
+
+Widget _id(Pass passed){
+  return Container(
+    child: Row(
+      children: [
+        Container(decoration:BoxDecoration(gradient: LinearGradient(colors: [Colors.black38,Colors.black12])),width: 100,height: 30,margin:EdgeInsets.fromLTRB(10, 10, 10, 10),child: Text('ID',style:TextStyle(fontSize: 30) )),
+        Container( width: 180,height: 30,margin:EdgeInsets.fromLTRB(10, 10, 10, 10),color:Colors.blueGrey ,child:Text(passed.id,style: TextStyle(fontSize: 30),)
+
+
+        ),
+      ],
+    )
+  );
+
+
 }
 
 
