@@ -114,7 +114,7 @@ Widget _id(Pass passed){
   return Container(
     child: Row(
       children: [
-        Container(decoration:BoxDecoration(border: Border.all  (color: Colors.white54
+        Container(decoration:BoxDecoration(border: Border.all (color: Colors.white54
         ), borderRadius: BorderRadius.circular(10)),width: 100,height: 30,margin:EdgeInsets.fromLTRB(10, 10, 10, 10),child: Text('ID',style:TextStyle(fontSize: 30,color: Colors.white54) )),
         Container( width: 180,height: 30,margin:EdgeInsets.fromLTRB(10, 10, 10, 10),child:Text(passed.id,style: TextStyle(fontSize: 30),)
 
