@@ -100,7 +100,7 @@ _buildPass(Pass passed,context,int key){
 
                 _id(passed),//Container(child:Text('       ID        :   '+passed.id, style: TextStyle(fontSize: 30))),
                 Text('Password :  '+passed.password, style: TextStyle(fontSize: 30)),
-                Text('  Remark   :  '+passed.remark, style: TextStyle(fontSize: 30)),
+                Text('  Remark  :  '+passed.remark, style: TextStyle(fontSize: 30)),
          ],
             )));
 
