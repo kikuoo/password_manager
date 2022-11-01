@@ -97,7 +97,7 @@ _buildPass(Pass passed,context,int key){
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(width:500,alignment:Alignment.center,child:Text(passed.name, style: TextStyle(
+                Container(width:500,alignment:Alignment.center,child:Text(passed.name, style: TextStyle(letterSpacing:10,
                 fontSize: 30,color: Colors.white70))),
                 _id(passed),
                 _password(passed),
