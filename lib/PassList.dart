@@ -26,12 +26,13 @@ class PassList extends StatelessWidget{
 }
 
 _buildPass(Pass passed,context,int key){
-    return Card(
+    return Card(elevation: 10,shadowColor: Colors.blue,
       margin: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-      color: Colors.blueGrey[600],
+      color: Colors.blueGrey[800],
+
         child: InkWell(
             onTap: () {
               showDialog(
@@ -96,7 +97,8 @@ _buildPass(Pass passed,context,int key){
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(width:500,alignment:Alignment.center,child:Text(passed.name, style: TextStyle(fontSize: 30,color: Colors.white38))),
+                Container(width:500,alignment:Alignment.center,child:Text(passed.name, style: TextStyle(
+                fontSize: 30,color: Colors.white70))),
                 _id(passed),
                 _password(passed),
                 _others(passed)
@@ -109,9 +111,9 @@ Widget _id(Pass passed){
   return Container(
     child: Row(
       children: [
-        Container(decoration:BoxDecoration(color: Colors.white38
-        , borderRadius: BorderRadius.circular(10)),width: 100,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child: Text('ID',textAlign: TextAlign.center,style:TextStyle(fontSize: 25,color: Colors.blueGrey[600]) )),
-        Container( width: 180,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child:Text(passed.id,style: TextStyle(fontSize: 30),)
+        Container(decoration:BoxDecoration(color: Colors.white70
+        , borderRadius: BorderRadius.circular(10)),width: 100,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child: Text('ID',textAlign: TextAlign.center,style:TextStyle(fontSize: 25,color: Colors.blueGrey[800]) )),
+        Container( width: 180,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child:Text(passed.id,style: TextStyle(fontSize: 30,color: Colors.white70),)
         ),
       ],
     )
@@ -122,9 +124,9 @@ Widget _password(Pass passed){
   return Container(
       child: Row(
         children: [
-          Container(decoration:BoxDecoration(color: Colors.white38
-              , borderRadius: BorderRadius.circular(10)),width: 100,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child: Text('Password',textAlign: TextAlign.center,style:TextStyle(fontSize: 20,color: Colors.blueGrey[600]) )),
-          Container( width: 180,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child:Text(passed.password,style: TextStyle(fontSize: 30),)
+          Container(decoration:BoxDecoration(color: Colors.white70
+              , borderRadius: BorderRadius.circular(10)),width: 100,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child: Text('Password',textAlign: TextAlign.center,style:TextStyle(fontSize: 20,color: Colors.blueGrey[800]) )),
+          Container( width: 180,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child:Text(passed.password,style: TextStyle(fontSize: 30,color: Colors.white70),)
           ),
         ],
       )
@@ -135,9 +137,10 @@ Widget _others(Pass passed){
   return Container(
       child: Row(
         children: [
-          Container(decoration:BoxDecoration(color: Colors.white38
-              , borderRadius: BorderRadius.circular(10)),width: 100,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child: Text('Others',textAlign: TextAlign.center,style:TextStyle(fontSize: 25,color: Colors.blueGrey[600]) )),
-          Container( width: 180,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 10),child:Text(passed.remark,style: TextStyle(fontSize: 30),)
+          Container(decoration:BoxDecoration(color: Colors.white70
+
+              , borderRadius: BorderRadius.circular(10)),width: 100,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 2),child: Text('Others',textAlign: TextAlign.center,style:TextStyle(fontSize: 25,color: Colors.blueGrey[800]) )),
+          Container( width: 180,height: 30,margin:EdgeInsets.fromLTRB(10, 2, 10, 10),child:Text(passed.remark,style: TextStyle(fontSize: 30,color: Colors.white70),)
           ),
         ],
       )
