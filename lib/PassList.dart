@@ -26,7 +26,7 @@ class PassList extends StatelessWidget{
 }
 
 _buildPass(Pass passed,context,int key){
-    return Card(elevation: 10,shadowColor: Colors.blue,
+    return Card(elevation: 15,shadowColor: Colors.white60,
       margin: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -39,7 +39,7 @@ _buildPass(Pass passed,context,int key){
                 context: context,
                 builder: (context) {
                   return SimpleDialog(
-                    title: Text("This is the title"),
+                    title: Text("Edit"),
                     children: [
                       SimpleDialogOption(
                         onPressed: () {

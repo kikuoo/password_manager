@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -131,7 +133,7 @@ class _PassListPageState extends State<PassListPage> {
         },
         ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blueGrey[900],
+        backgroundColor: Colors.blueGrey[300],
         onPressed: () async {
           await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
@@ -165,23 +167,27 @@ class _PassAddPageState extends State<PassAddPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('リスト追加'),
+      appBar: AppBar(backgroundColor: Colors.blueGrey[900],
+        title: Text('Add new'),
       ),
-      body: Container(
-        padding: EdgeInsets.all(64),
-        child: Column(
+      body:Container(color: Colors.blueGrey[600],
+        padding: EdgeInsets.all(30),
+        child:
+          Column(
           mainAxisAlignment: MainAxisAlignment.center,
 
           children: <Widget>[
                         const SizedBox(height: 8),
-            TextField( decoration: InputDecoration(
-                labelText: "Title",
-                ),
+
+            TextField( decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.circular(20),),
+                labelText: "Title",labelStyle:TextStyle(color: Colors.white)
+                ),style: TextStyle(fontSize:24,color: Colors.white),
 
               onChanged: (String value) {
                 setState(() {
                   _text1 = value ;
+
                 });
               },
             ),
@@ -222,9 +228,11 @@ class _PassAddPageState extends State<PassAddPage> {
 
             const SizedBox(height: 8),
             Container(
+
               width: double.infinity,
 
-              child: ElevatedButton(
+
+              child: ElevatedButton(style: ElevatedButton.styleFrom(primary:Colors.blueGrey[900] ),
                 onPressed: ()  {
                   var passData =  Hive.box<Pass>('passim');
                   var pass = Pass(this._text1,this._text2,this._text3,this._text4);
@@ -232,7 +240,8 @@ class _PassAddPageState extends State<PassAddPage> {
 
                   Navigator.of(context).pop();
                 },
-                child: Text('リスト追加', style: TextStyle(color: Colors.white)),
+
+                child: Text('add to List',style:TextStyle(fontSize: 24)),
               ),
 
             ),
@@ -243,12 +252,12 @@ class _PassAddPageState extends State<PassAddPage> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('キャンセル'),
+                child: Text('Cancel',style:TextStyle(fontSize:24,color: Colors.white)),
+                                ),
+                           ),
+                  ],
               ),
-            ),
-          ],
-        ),
-      ),
+         ),
     );
   }
 }
