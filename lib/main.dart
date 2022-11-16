@@ -171,13 +171,13 @@ class _PassAddPageState extends State<PassAddPage> {
         title: Text('Add new'),
       ),
       body:Container(color: Colors.blueGrey[600],
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.all(50),
         child:
           Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
 
           children: <Widget>[
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 10),
 
             TextField( decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white),
               borderRadius: BorderRadius.circular(20),),
@@ -193,9 +193,10 @@ class _PassAddPageState extends State<PassAddPage> {
             ),
 
             TextField(
-              decoration: InputDecoration(
-                labelText: "ID",
-              ),
+              decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(20),),
+                labelText: "ID",labelStyle:TextStyle(color: Colors.white)),style: TextStyle(fontSize:24,color: Colors.white),
+
               onChanged: (String value) {
                 setState(() {
                   _text2 = value;
@@ -204,9 +205,10 @@ class _PassAddPageState extends State<PassAddPage> {
             ),
 
             TextField(
-              decoration: InputDecoration(
-                labelText: "Password",
-              ),
+              decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(20),),
+                labelText: "Password",labelStyle:TextStyle(color: Colors.white)
+              ),style: TextStyle(fontSize:24,color: Colors.white),
               onChanged: (String value) {
                 setState(() {
                   _text3 = value;
@@ -215,10 +217,11 @@ class _PassAddPageState extends State<PassAddPage> {
             ),
 
           TextField(
-            decoration: InputDecoration(
-              labelText: "Remarks",
+            decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.circular(20),),
+              labelText: "Remarks",labelStyle:TextStyle(color: Colors.white)
 
-            ),
+            ),style: TextStyle(fontSize:24,color: Colors.white),
             onChanged: (String value) {
               setState(() {
                 _text4 = value;
